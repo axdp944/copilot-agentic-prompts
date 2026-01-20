@@ -1,0 +1,28 @@
+# Environment and secrets
+.env
+*.env.local
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Node (if installing locally)
+node_modules/
+npm-debug.log*
+yarn-error.log*
+
+# Build artifacts
+*.log
+tmp/
+temp/
+
+# Docker
+.docker/
