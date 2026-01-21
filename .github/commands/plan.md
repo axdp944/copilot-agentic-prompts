@@ -211,6 +211,18 @@ After structure approval:
 ### Overview
 [What this phase accomplishes]
 
+### Spec Coverage
+[List the numbered specification sections this phase implements, e.g., "1.1, 1.2, 2.1, 2.3, 3.1"]
+
+### Key Deliverables
+[Numbered list of trackable deliverables with completion tracking format]
+1. [Deliverable description]
+2. [Deliverable description]
+3. [Deliverable description]
+...
+
+**Format**: When plan is created, show as plain numbered list. The tracker.md will convert these to status indicators.
+
 ### Changes Required:
 
 #### 1. [Component/File Group]
@@ -275,21 +287,117 @@ After structure approval:
 - Similar implementation: `[file:line]`
 ````
 
-### Step 5: Sync and Review
+### Step 5: Create Implementation Tracker
+
+After writing the implementation plan, create a companion tracker document to monitor progress during implementation.
+
+1. **Create tracker file** at `thoughts/shared/plans/YYYY-MM-DD-ENG-XXXX-description-tracker.md`
+   - Use the same filename as the plan with `-tracker` suffix
+   - Example: If plan is `2026-01-21-react-hello-world.md`, tracker is `2026-01-21-react-hello-world-tracker.md`
+
+2. **Use this tracker template**:
+
+````markdown
+## Implementation Progress Tracker
+
+**Last Updated**: [Current date YYYY-MM-DD]
+
+**Status**: ⬜ **NOT STARTED** - Implementation pending
+
+**Related Documents**:
+- [Implementation Plan](./{plan-filename}.md) - Detailed implementation plan
+
+### Phase Progress
+
+| Phase | Name | Status | Progress | Notes |
+|-------|------|--------|----------|-------|
+| 1 | [Phase 1 Name] | ⬜ Not Started | 0/N | N = number of key deliverables |
+| 2 | [Phase 2 Name] | ⬜ Not Started | 0/N | |
+| 3 | [Phase 3 Name] | ⬜ Not Started | 0/N | |
+| ... | | | | |
+
+**Status Legend**: ⬜ Not Started | 🟡 In Progress | ✅ Complete | ⏸️ Blocked
+
+---
+
+## Phase Details
+
+### Phase 1: [Phase Name]
+
+**Status**: ⬜ Not Started
+
+**Spec Coverage**: [List from plan, e.g., "1.1, 1.2, 2.1"]
+
+**Key Deliverables**:
+1. ⬜ [Deliverable 1 from plan]
+2. ⬜ [Deliverable 2 from plan]
+3. ⬜ [Deliverable 3 from plan]
+...
+
+**Notes**: 
+- [Any implementation notes will be added during implementation]
+
+---
+
+### Phase 2: [Phase Name]
+
+**Status**: ⬜ Not Started
+
+**Spec Coverage**: [List from plan]
+
+**Key Deliverables**:
+1. ⬜ [Deliverable 1 from plan]
+2. ⬜ [Deliverable 2 from plan]
+...
+
+**Notes**: 
+- [Any implementation notes will be added during implementation]
+
+---
+
+[Continue for all phases...]
+
+---
+
+## Known Issues & Blockers
+
+**Status**: No known issues yet - implementation not started
+
+[This section will be updated during implementation with any discovered issues]
+
+---
+
+## Implementation Notes
+
+[This section will be updated during implementation with important findings, decisions, or deviations from the plan]
+````
+
+3. **Populate tracker from plan**:
+   - Extract all phases from the implementation plan
+   - Copy "Spec Coverage" and "Key Deliverables" for each phase
+   - Mark all items with ⬜ (Not Started) status
+   - Set initial Progress as "0/N" where N is the number of deliverables
+
+4. **Important**: The tracker is created during planning but only updated during implementation via the `implement` command
+
+### Step 6: Sync and Review
 
 1. **Sync the thoughts directory**:
    - This ensures the plan is properly indexed and available
 
-2. **Present the draft plan location**:
+2. **Present the draft plan and tracker locations**:
    ```
-   I've created the initial implementation plan at:
-   `thoughts/shared/plans/YYYY-MM-DD-ENG-XXXX-description.md`
+   I've created the implementation plan and tracker:
+   - Plan: `thoughts/shared/plans/YYYY-MM-DD-ENG-XXXX-description.md`
+   - Tracker: `thoughts/shared/plans/YYYY-MM-DD-ENG-XXXX-description-tracker.md`
 
-   Please review it and let me know:
+   Please review the plan and let me know:
    - Are the phases properly scoped?
    - Are the success criteria specific enough?
    - Any technical details that need adjustment?
    - Missing edge cases or considerations?
+
+   The tracker is ready to monitor progress once implementation begins.
    ```
 
 3. **Iterate based on feedback** - be ready to:

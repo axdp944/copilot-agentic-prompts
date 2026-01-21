@@ -1,0 +1,62 @@
+# Ralph Wiggum AI Agent Development Environment
+#
+# This docker-compose file creates a safe, containerized environment for
+# running AI agents with full autonomy. Based on Geoffrey Huntley's
+# "Ralph Wiggum" strategy: https://ghuntley.com/ralph/
+#
+# Usage:
+#   1. Copy .env.example to .env and configure
+#   2. docker compose up -d
+#   3. docker compose exec ralph bash
+
+services:
+  ralph:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: ralph-agent
+
+    # Keep container running for exec access
+    stdin_open: true
+    tty: true
+
+    # Mount workspace from host - set WORKSPACE env var or use default
+    volumes:
+      - C:\Users\Adam\Desktop\workspace\agentic-prompts:/workspace
+      # Mount git config from host for commits
+      - ${GITCONFIG:-~/.gitconfig}:/root/.gitconfig:ro
+      # Persist data between sessions (bash history, etc.)
+      - ralph-persist:/root/.persist
+
+    # Working directory inside container
+    working_dir: /workspace
+
+    # Environment variables
+    environment:
+      # Pass through common API keys if set on host
+      - ANTHROPIC_API_KEY=${ANTHROPIC_API_KEY:-}
+      - OPENAI_API_KEY=${OPENAI_API_KEY:-}
+      # Ensure proper terminal behavior
+      - TERM=xterm-256color
+      # NVM setup
+      - NVM_DIR=/root/.nvm
+      # Persist bash history to volume
+      - HISTFILE=/root/.persist/.bash_history
+
+    # Full network access for package installation and API calls
+    network_mode: bridge
+
+    # Resource limits (configure in .env)
+    deploy:
+      resources:
+        limits:
+          memory: ${MEMORY_LIMIT:-4G}
+        reservations:
+          memory: ${MEMORY_RESERVATION:-512M}
+
+    # Restart policy - keeps ralph running
+    restart: unless-stopped
+
+volumes:
+  ralph-persist:
+    name: ralph-persist

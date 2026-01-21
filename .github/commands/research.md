@@ -9,12 +9,29 @@ You are tasked with conducting comprehensive research across the codebase to ans
 
 ## Initial Setup:
 
-When this command is invoked, respond with:
-```
-I'm ready to research the codebase. Please provide your research question or area of interest, and I'll analyze it thoroughly by exploring relevant components and connections.
-```
+When this command is invoked:
+- **If a research query follows the command** (e.g., `research: analyze authentication flow`): Proceed directly through all steps below with that query
+- **If no text follows the command**: Respond with:
+  ```
+  I'm ready to research the codebase. Please provide your research question or area of interest, and I'll analyze it thoroughly by exploring relevant components and connections.
+  ```
+  Then wait for the user's research query.
 
-Then wait for the user's research query.
+## Handling Empty or New Projects:
+
+When research is performed on an empty or relatively empty directory:
+1. **Recognize the context**: Identify that this is a new/baseline project
+2. **Skip sub-agent spawning**: Do not spawn parallel sub-agents since there's no codebase to research
+3. **Use web_search instead**: Use the web_search tool to gather current information about:
+   - What would be needed to create the baseline program or application based on the research query
+   - Industry standards, common patterns, best practices, and standard project structures
+   - Appropriate technologies, frameworks, and tools
+4. **Document baseline requirements**: In the research document, include:
+   - Required project structure
+   - Essential dependencies and tools
+   - Configuration files needed
+   - Initial implementation steps
+   - Links to relevant documentation and examples from web_search results
 
 ## Steps to follow after receiving the research query:
 
@@ -53,7 +70,12 @@ Then wait for the user's research query.
    - Answer the user's specific questions with concrete evidence
 
 5. **Gather metadata for the research document:**
-   - generate all relevant metadata
+   - Generate all relevant metadata
+   - **Researcher name**: Determine the researcher name by:
+     1. First, try: `git config user.name` (git user)
+     2. Fallback: Use GitHub Copilot user login email if available
+     3. Final fallback: Use "unknown"
+   - **Directory structure**: Create `thoughts/shared/research/` if it doesn't exist
    - Filename: `thoughts/shared/research/YYYY-MM-DD-ENG-XXXX-description.md`
      - Format: `YYYY-MM-DD-ENG-XXXX-description.md` where:
        - YYYY-MM-DD is today's date
@@ -63,9 +85,10 @@ Then wait for the user's research query.
        - With ticket: `2025-01-08-ENG-1478-parent-child-tracking.md`
        - Without ticket: `2025-01-08-authentication-flow.md`
 
-6. **Generate research document:**
+6. **Generate research document as formal specification:**
    - Use the metadata gathered in step 4
-   - Make every single requirement a numbered list instead of bullet points so I can easily reference any requirement through the whole doc.
+   - **CRITICAL**: Structure the document as a **formal specification with numbered sections** (1, 2, 3, 1.1, 1.2, etc.) so requirements can be traced to implementation plans
+   - Use numbered sections and subsections throughout (not bullet points) for all requirements and findings
    - Structure the document with YAML frontmatter followed by content:
      ```markdown
      ---
@@ -75,13 +98,13 @@ Then wait for the user's research query.
      branch: [Current branch name]
      repository: [Repository name]
      topic: "[User's Question/Topic]"
-     tags: [research, codebase, relevant-component-names]
+     tags: [research, specification, relevant-component-names]
      status: complete
      last_updated: [Current date in YYYY-MM-DD format]
      last_updated_by: [Researcher name]
      ---
 
-     # Research: [User's Question/Topic]
+     # [Topic] - Implementation Specification
 
      **Date**: [Current date and time with timezone from step 4]
      **Researcher**: [Researcher name]
@@ -92,38 +115,64 @@ Then wait for the user's research query.
      ## Research Question
      [Original user query]
 
-     ## Summary
-     [High-level findings answering the user's question]
+     ## Overview
+     [High-level summary of what this specification covers and why it's needed]
 
-     ## Detailed Findings
+     ## 1. Prerequisites
+     ### 1.1 [Requirement Name]
+     [Description of prerequisite requirement]
 
-     ### [Component/Area 1]
+     ### 1.2 [Requirement Name]
+     [Description of prerequisite requirement]
+
+     ## 2. [Major Area/Component]
+     ### 2.1 [Sub-requirement]
+     [Detailed description with file references if applicable]
      - Finding with reference ([file.ext:line](link))
      - Connection to other components
      - Implementation details
 
-     ### [Component/Area 2]
+     ### 2.2 [Sub-requirement]
+     [Continue with numbered subsections...]
+
+     ## 3. [Another Major Area]
+     ### 3.1 [Requirement]
+     ...
+
+     ## 4. Architecture and Design
+     ### 4.1 [Architectural Requirement]
+     [Patterns, conventions, and design decisions discovered]
+
+     ### 4.2 [Design Pattern]
+     ...
+
+     ## 5. Implementation Requirements
+     ### 5.1 [Core Requirement]
+     [Specific implementation details]
+
+     ### 5.2 [Additional Requirement]
      ...
 
      ## Code References
-     - `path/to/file.py:123` - Description of what's there
-     - `another/file.ts:45-67` - Description of the code block
-
-     ## Architecture Insights
-     [Patterns, conventions, and design decisions discovered]
+     1. `path/to/file.py:123` - Description of what's there
+     2. `another/file.ts:45-67` - Description of the code block
+     3. ...
 
      ## Historical Context (from thoughts/)
      [Relevant insights from thoughts/ directory with references]
-     - `thoughts/shared/something.md` - Historical decision about X
-     - `thoughts/local/notes.md` - Past exploration of Y
+     1. `thoughts/shared/something.md` - Historical decision about X
+     2. `thoughts/local/notes.md` - Past exploration of Y
+     
      Note: Paths exclude "searchable/" even if found there
 
      ## Related Research
      [Links to other research documents in thoughts/shared/research/]
 
      ## Open Questions
-     [Any areas that need further investigation]
+     [Any areas that need further investigation - should be minimal or none]
      ```
+
+   **Template Flexibility Note**: The above template (Prerequisites, Architecture, Implementation Requirements) works well for technical implementation specifications. However, research topics may vary widely, so adapt the section structure as appropriate for the specific research inquiry while maintaining numbered sections throughout.
 
 7. **Add GitHub permalinks (if applicable):**
    - Check if on main branch or if commit is pushed: `git branch --show-current` and `git status`
