@@ -24,18 +24,16 @@ services:
     volumes:
       - C:\Users\Adam\Desktop\workspace\agentic-prompts:/workspace
       # Mount git config from host for commits
-      - ${GITCONFIG:-~/.gitconfig}:/root/.gitconfig:ro
+      - ~/.gitconfig:/root/.gitconfig:ro
       # Persist data between sessions (bash history, etc.)
       - ralph-persist:/root/.persist
 
     # Working directory inside container
     working_dir: /workspace
-
+    env_file:
+      - ./.env
     # Environment variables
     environment:
-      # Pass through common API keys if set on host
-      - ANTHROPIC_API_KEY=${ANTHROPIC_API_KEY:-}
-      - OPENAI_API_KEY=${OPENAI_API_KEY:-}
       # Ensure proper terminal behavior
       - TERM=xterm-256color
       # NVM setup
@@ -50,9 +48,9 @@ services:
     deploy:
       resources:
         limits:
-          memory: ${MEMORY_LIMIT:-4G}
+          memory: 4G
         reservations:
-          memory: ${MEMORY_RESERVATION:-512M}
+          memory: 512M
 
     # Restart policy - keeps ralph running
     restart: unless-stopped
