@@ -38,13 +38,12 @@ You MUST:
 - Treat the message as a normal request (not a command mode)
 - Proceed with general assistance
 
-# Sub Agent Usage
-    
-### SUB AGENT ANNOUNCEMENT (REQUIRED)
-When you are using sub-agents you must announce to the user the subagent you have invoked.
+# Copilot Agent Usage 
+### AGENT ANNOUNCEMENT (REQUIRED)
+**MANDATORY**: When copilot is using an agent it must announce to the user the name of the agent that was invoked.
 
 ```
-    SUB AGENT: <name of subagent>
+    AGENT NAME: <name of agent>
     DESCRIPTION OF WORK: <desription of workflow the agent is delegating to the subagent>
 ```
 
