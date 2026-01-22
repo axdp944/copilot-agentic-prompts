@@ -42,6 +42,7 @@ Shell into container:
 
 ## Copilot Login
 
+* `cd /project-dir`
 * `copilot --model claude-sonnet-4.5` (Copilot should load in the CLI)
 * `/login` to login to copilot by copying the URL into a web browser, paste code and login.
 * On successfully login, verify that your `copilot-instruction.md` file loaded successfully from ~/.copilot:
