@@ -61,10 +61,12 @@ research: How to create a simple React "hello world" UI using modern best practi
 ```
 
 ### Plan:
+Agent will place researched tasks in  `thoughts/shared/research`
 ```text
 plan: path/to/research-file.md 
 ```
 ### Implement:
+Agents will place plans+trackers in `thoughts/shared/plans`
 ```text
 implement: path/to/plan-file.md 
 ```
