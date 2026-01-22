@@ -1,6 +1,6 @@
 # Mode Detection Test Suite
 
-**Purpose**: Verify that Copilot correctly detects command mode triggers according to `.github/copilot-instructions.md`.
+**Purpose**: Verify that Copilot correctly detects command mode triggers according to `.copilot/copilot-instructions.md`.
 
 **Last Updated**: 2026-01-21
 
@@ -26,9 +26,9 @@ These should trigger mode detection and read the corresponding command file.
 
 | # | Input | Expected Behavior | Result | Notes |
 |---|-------|-------------------|--------|-------|
-| 1.1 | `plan` | ✓ Announce "**MODE: PLAN**"<br>✓ Read `.github/commands/plan.md`<br>✓ Follow plan.md procedure | ☐ | |
-| 1.2 | `research` | ✓ Announce "**MODE: RESEARCH**"<br>✓ Read `.github/commands/research.md`<br>✓ Follow research.md procedure | ☐ | |
-| 1.3 | `implement` | ✓ Announce "**MODE: IMPLEMENT**"<br>✓ Read `.github/commands/implement.md`<br>✓ Follow implement.md procedure | ☐ | |
+| 1.1 | `plan` | ✓ Announce "**MODE: PLAN**"<br>✓ Read `.copilot/commands/plan.md`<br>✓ Follow plan.md procedure | ☐ | |
+| 1.2 | `research` | ✓ Announce "**MODE: RESEARCH**"<br>✓ Read `.copilot/commands/research.md`<br>✓ Follow research.md procedure | ☐ | |
+| 1.3 | `implement` | ✓ Announce "**MODE: IMPLEMENT**"<br>✓ Read `.copilot/commands/implement.md`<br>✓ Follow implement.md procedure | ☐ | |
 
 ---
 
@@ -73,7 +73,7 @@ These should NOT trigger mode detection because no matching command file exists.
 
 | # | Input | Expected Behavior | Result | Notes |
 |---|-------|-------------------|--------|-------|
-| 5.1 | `Plan: file.md` (capitalized) | Behavior depends on file system:<br>- If `.github/commands/Plan.md` exists: detect<br>- If only `plan.md` exists: depends on OS | ☐ | |
+| 5.1 | `Plan: file.md` (capitalized) | Behavior depends on file system:<br>- If `.copilot/commands/Plan.md` exists: detect<br>- If only `plan.md` exists: depends on OS | ☐ | |
 | 5.2 | `PLAN: file.md` (all caps) | Same as above | ☐ | |
 | 5.3 | `pLaN: file.md` (mixed case) | Same as above | ☐ | |
 

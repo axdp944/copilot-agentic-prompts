@@ -1,7 +1,7 @@
 # Copilot Project Instructions
 
 All paths below are **relative to the repository root**.
-Command definitions live in `.github/commands/` and should be treated as authoritative mode-specific guides.
+Command definitions live in `.copilot/commands/` and should be treated as authoritative mode-specific guides.
 
 ## Modes and Command Phrases
 ** CRITICAL: MODE DETECTION REQUIRED  ** 
@@ -12,25 +12,25 @@ Command definitions live in `.github/commands/` and should be treated as authori
 - `<word>: <parameters>` (command with arguments)
 
 Examples of valid mode triggers:
-- `research` → Check for `.github/commands/research.md`
-- `research: authentication flow` → Check for `.github/commands/research.md`
-- `plan` → Check for `.github/commands/plan.md`
-- `plan: path/to/file.md` → Check for `.github/commands/plan.md`
-- `implement` → Check for `.github/commands/implement.md`
-- `implement: path/to/plan.md` → Check for `.github/commands/implement.md`
+- `research` → Check for `.copilot/commands/research.md`
+- `research: authentication flow` → Check for `.copilot/commands/research.md`
+- `plan` → Check for `.copilot/commands/plan.md`
+- `plan: path/to/file.md` → Check for `.copilot/commands/plan.md`
+- `implement` → Check for `.copilot/commands/implement.md`
+- `implement: path/to/plan.md` → Check for `.copilot/commands/implement.md`
 
 ### Mode Detection Process
 1. **FIRST**: Check if user message starts with a single word (with or without `: <args>`)
 2. **SECOND**: Extract the command word (everything before the colon, or the entire message if no colon)
-3. **THIRD**: Check if `.github/commands/<word>.md` exists
+3. **THIRD**: Check if `.copilot/commands/<word>.md` exists
 4. **IF FOUND**: Execute the "match found" procedure below
 5. **IF NOT FOUND**: Treat as normal message (not a command)
 
 ### When a Match is Found
 You MUST:
 1. **STOP** and recognize this as a mode trigger
-2. **ANNOUNCE** to the user: "**MODE: [UPPERCASE_COMMAND]** - I'm executing your request within the [command] mode as specified in `.github/commands/[command].md`."
-3. **READ** the corresponding command file from `.github/commands/` end-to-end
+2. **ANNOUNCE** to the user: "**MODE: [UPPERCASE_COMMAND]** - I'm executing your request within the [command] mode as specified in `.copilot/commands/[command].md`."
+3. **READ** the corresponding command file from `.copilot/commands/` end-to-end
 4. **FOLLOW** that command file's procedure exactly, including all restrictions on argument handling
 5. **DO NOT** proceed with general implementation or make assumptions
 
@@ -60,7 +60,7 @@ When revision of Prompts, Commands, Instructions and Agents, keep the following 
 - Keep documentation organized.
 - For larger or more complex instructions on a single topic, first check to see if this topic large has a markdown file associated to it and add it there.
 If no markdown file is created for this subject, then create the markdown file and place it in the relevant directory (commands, instructions, tools, agents, etc)
-- ./.github/copilot-instructions should be mostly an outline referring to other documents for more information. Keep this file neat, concise and well organized.  
+- .copilot/copilot-instructions.md should be mostly an outline referring to other documents for more information. Keep this file neat, concise and well organized.  
 - Keep all markdowns narrow to a particular topic and as concise as possible.
 - Avoid explicitly describing steps in a specific order, such as 1-9 if those are all the steps included. Instead, state to proceed through steps in numerical order which is
 less prone to errors when prompts are further refactored in the future. 

@@ -21,7 +21,10 @@ services:
 
     # Mount workspace from host - set WORKSPACE env var or use default
     volumes:
-      - C:\Users\Adam\Desktop\workspace\agentic-prompts:/workspace
+      # Mounts prompts globally so they can be referenced everywhere
+      - C:\Users\Adam\Desktop\workspace\agentic-prompts\.copilot:/root/.copilot
+      # Path to target project directory -> the directory path where you want your agent to do work
+      - C:\Users\Adam\Desktop\workspace\react-sample-app:/project-dir
       # Mount git config from host for commits
       - ~/.gitconfig:/root/.gitconfig:ro
       # Persist data between sessions (bash history, etc.)

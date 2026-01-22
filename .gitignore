@@ -1,3 +1,8 @@
+# .copilot
+.copilot/pkg
+.copilot/logs
+.copilot/session-state
+
 # Environment and secrets
 .env
 *.env.local

@@ -1,6 +1,6 @@
 # Mode Detection Test Execution Prompt
 
-**Purpose**: This prompt instructs the AI to execute the mode detection test suite defined in `.github/tests/mode-detection-tests.md`.
+**Purpose**: This prompt instructs the AI to execute the mode detection test suite defined in `.copilot/tests/mode-detection-tests.md`.
 
 **Usage**: Copy and send this entire prompt section to Copilot in a fresh session.
 
@@ -17,18 +17,18 @@ This repository uses command modes that are triggered when a user message starts
 - `<command>: <parameters>` (e.g., `plan: file.md`)
 
 When these patterns are detected, you should:
-1. Check if `.github/commands/<command>.md` exists
+1. Check if `.copilot/commands/<command>.md` exists
 2. Announce the mode (e.g., "**MODE: PLAN**")
 3. Read the command file
 4. Follow its procedures
 
-The mode detection rules are defined in `.github/copilot-instructions.md` (lines 6-32).
+The mode detection rules are defined in `.copilot/copilot-instructions.md` (lines 6-32).
 
 ### Your Task
 
-Execute the test suite defined in `.github/tests/mode-detection-tests.md`:
+Execute the test suite defined in `.copilot/tests/mode-detection-tests.md`:
 
-1. **Read the test suite file completely**: `.github/tests/mode-detection-tests.md`
+1. **Read the test suite file completely**: `.copilot/tests/mode-detection-tests.md`
 2. **Execute each test case** in Sections 1-8:
    - For each test input, **simulate what you would do** if you received that input
    - Be honest about whether you would detect the mode correctly
@@ -100,7 +100,7 @@ Please provide your results in this format:
 
 After completing the test suite analysis, please also:
 
-1. **Read** `.github/copilot-instructions.md` lines 6-32 (mode detection section)
+1. **Read** `.copilot/copilot-instructions.md` lines 6-32 (mode detection section)
 2. **Assess** whether the instructions are clear enough to prevent failures
 3. **Suggest improvements** if you find any ambiguities or potential failure points
 

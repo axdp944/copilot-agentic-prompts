@@ -1,14 +1,12 @@
 
-this project is design to create a set of high-level prompts, instructions and commands for agentic
+# Copilot Agentic Prompts
 
-The primary methodologies for development include the following:
+A baseline development environment for performing high-level agentic engineering using Copilot CLI. 
 
-- [Research, Plan, Implement](https://github.com/humanlayer/advanced-context-engineering-for-coding-agents/blob/main/ace-fca.md)
-Each stage is associated to a command Research, Plan, Implement:
-- research: .github/commands/research_codebase.md
-- plan: .github/commands/create_plan.md
-- implement: .github/commands/implement_plan.md
+This project is designed around the Research, Plan, Implement strategy popularized by  Dexter Horthy of Humanlayer. 
 
-- ["Ralph" Loops](https://ghuntley.com/loop/)
-    - Minimize model context issues which result in AI models becoming less effective
+For more information, see [HumanLayer](https://www.humanlayer.dev/) or [Research, Plan, Implement Strategy](https://github.com/humanlayer/advanced-context-engineering-for-coding-agents/blob/main/ace-fca.md)
 
+# Acknowledgements
+
+With sincere gratitude to my good friend [gradientsky](https://github.com/gradientsky) who opened my eyes to this next exciting chapter in software development. 
