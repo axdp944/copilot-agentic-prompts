@@ -1,5 +1,8 @@
 # User instructions
 
+The resources in this repository are intended to be run explicitly within the accompanied containerized development environment
+defined in `Dockerfile` and `docker-compose.yaml`. It is not recommended to use these resources on your host OS. 
+
 ## Container Setup:
 
 ### docker-compose configuration:
@@ -12,7 +15,7 @@ open `docker-compose.yaml`
 
 **Windows**
 - C:\Users\<Your User>\Desktop\workspace\agentic-prompts\.copilot:/root/.copilot
-- 
+
 **OSX/Linux**
 - /home/<your user>/workspace/agentic-prompts/.copilot:~/.copilot
 
@@ -56,8 +59,13 @@ The following are instructions for the user agent wrangler.
 **User of Model Claude Sonnet 4.5 is strongly recommended**
 
 ### Research:
+
+Sample topics for research:
 ```text
 research: How to create a simple React "hello world" UI using modern best practices and tooling in 2026?
+```
+```text
+research: research: how to add a .env file to this nodejs project
 ```
 
 ### Plan:
@@ -70,3 +78,4 @@ Agents will place plans+trackers in `thoughts/shared/plans`
 ```text
 implement: path/to/plan-file.md 
 ```
+

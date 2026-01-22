@@ -22,7 +22,7 @@ When these patterns are detected, you should:
 3. Read the command file
 4. Follow its procedures
 
-The mode detection rules are defined in `.copilot/copilot-instructions.md` (lines 6-32).
+The mode detection rules are defined in `.copilot/copilot-instructions.md`.
 
 ### Your Task
 
@@ -100,7 +100,7 @@ Please provide your results in this format:
 
 After completing the test suite analysis, please also:
 
-1. **Read** `.copilot/copilot-instructions.md` lines 6-32 (mode detection section)
+1. **Read** `.copilot/copilot-instructions.md` (mode detection section)
 2. **Assess** whether the instructions are clear enough to prevent failures
 3. **Suggest improvements** if you find any ambiguities or potential failure points
 

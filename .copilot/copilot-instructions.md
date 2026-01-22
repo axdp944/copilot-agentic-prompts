@@ -1,7 +1,26 @@
 # Copilot Project Instructions
 
-All paths below are **relative to the repository root**.
-Command definitions live in `.copilot/commands/` and should be treated as authoritative mode-specific guides.
+## .copilot File Path Resolution Algorithm
+
+**CRITICAL**: Any time a file or directory path includes `.copilot`, use this resolution algorithm:
+
+1. **FIRST**: Check in the user's home directory: `$HOME/.copilot/<path>`
+   - Example: `$HOME/.copilot/commands/plan.md`
+   - Example: `/root/.copilot/agents/codebase-analyzer.md`
+
+2. **SECOND**: If not found in home directory, check the current working directory: `$PWD/.copilot/<path>`
+   - Example: If `pwd` is `/project-dir`, check `/project-dir/.copilot/commands/plan.md`
+
+3. **IF NOT FOUND**: Report error to the user and ask for assistance before continuing.
+
+**Examples of paths that require this algorithm:**
+- `.copilot/commands/<command>.md`
+- `.copilot/agents/<agent>.md`
+- `.copilot/instructions/<instruction>.md`
+- `.copilot/tests/<test>.md`
+- `.copilot/tools/<tool>/`
+
+This algorithm applies universally to ALL `.copilot` references throughout the system.
 
 ## Modes and Command Phrases
 ** CRITICAL: MODE DETECTION REQUIRED  ** 
