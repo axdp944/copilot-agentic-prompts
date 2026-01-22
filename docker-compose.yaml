@@ -1,20 +1,19 @@
-# Ralph Wiggum AI Agent Development Environment
+# Copilot Development Environment
 #
 # This docker-compose file creates a safe, containerized environment for
-# running AI agents with full autonomy. Based on Geoffrey Huntley's
-# "Ralph Wiggum" strategy: https://ghuntley.com/ralph/
+# running AI agents with full autonomy.
 #
 # Usage:
 #   1. Copy .env.example to .env and configure
 #   2. docker compose up -d
-#   3. docker compose exec ralph bash
+#   3. docker compose exec ai-env bash
 
 services:
-  ralph:
+  ai-env:
     build:
       context: .
       dockerfile: Dockerfile
-    container_name: ralph-agent
+    container_name: ai-env
 
     # Keep container running for exec access
     stdin_open: true
@@ -26,7 +25,7 @@ services:
       # Mount git config from host for commits
       - ~/.gitconfig:/root/.gitconfig:ro
       # Persist data between sessions (bash history, etc.)
-      - ralph-persist:/root/.persist
+      - ai-env-persist:/root/.persist
 
     # Working directory inside container
     working_dir: /workspace
@@ -56,5 +55,5 @@ services:
     restart: unless-stopped
 
 volumes:
-  ralph-persist:
-    name: ralph-persist
+  ai-env-persist:
+    name: ai-env-persist
