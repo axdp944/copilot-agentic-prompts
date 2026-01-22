@@ -52,6 +52,8 @@ You are now ready to interact with copilot CLI.
 ## Example commands: 
 The following are instructions for the user agent wrangler.
 
+**User of Model Claude Sonnet 4.5 is strongly recommended**
+
 ### Research:
 ```text
 research: How to create a simple React "hello world" UI using modern best practices and tooling in 2026?
