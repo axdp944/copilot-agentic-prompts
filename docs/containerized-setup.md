@@ -36,5 +36,5 @@ Run the following commands:
 * `docker-compose up`
 
 Shell into container:
-* `docker-compose exec ai-env bash`
+* `docker-compose exec ai-env-cp bash`
 

@@ -22,12 +22,12 @@ This is NOT optional guidance. This is a REQUIRED initialization sequence that M
 
 **STEP 1 - HALT**: Do NOT respond to the user's request yet. Do NOT start any research, coding, or analysis.
 
-**STEP 2 - CHECK ENVIRONMENT (MANDATORY)**: Execute PowerShell command to check for `COPILOT_INSTRUCTIONS` environment variable:
-```powershell
-[System.Environment]::GetEnvironmentVariable('COPILOT_INSTRUCTIONS', 'User')
-```
-- On Windows, you MUST use `[System.Environment]::GetEnvironmentVariable('COPILOT_INSTRUCTIONS', 'User')` to access user-level environment variables
-- Note: `$env:COPILOT_INSTRUCTIONS` does NOT work reliably on Windows for newly set user variables
+**STEP 2 - CHECK ENVIRONMENT (MANDATORY)**: Check the operating system and execute the appropriate command to check for `COPILOT_INSTRUCTIONS` environment variable:
+- **First, detect the OS** using `uname -s` or equivalent
+- **On Linux/macOS**: Use `echo "${COPILOT_INSTRUCTIONS:-NOT_SET}"`
+- **On Windows (Git Bash/WSL)**: Use `echo "${COPILOT_INSTRUCTIONS:-NOT_SET}"`
+- **On Windows (PowerShell)**: Use `[System.Environment]::GetEnvironmentVariable('COPILOT_INSTRUCTIONS', 'User')`
+    - Note: `$env:COPILOT_INSTRUCTIONS` does NOT work reliably on Windows for newly set user variables
 - This variable MUST be set and contain the path to your global base instructions directory
 - **IF NOT SET**: STOP IMMEDIATELY and use ask_user tool to request assistance. DO NOT PROCEED.
 
