@@ -2,6 +2,8 @@
 # Based on Ubuntu LTS for maximum compatibility
 FROM ubuntu:24.04
 
+ENV COPILOT_INSTRUCTIONS=/root/.copilot
+
 # Prevent interactive prompts during package installation
 ENV DEBIAN_FRONTEND=noninteractive
 

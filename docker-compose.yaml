@@ -9,11 +9,11 @@
 #   3. docker compose exec ai-env bash
 
 services:
-  ai-env:
+  ai-env-cp:
     build:
       context: .
       dockerfile: Dockerfile
-    container_name: ai-env
+    container_name: ai-env-cp
 
     # Keep container running for exec access
     stdin_open: true
@@ -24,7 +24,7 @@ services:
       # Mounts prompts globally so they can be referenced everywhere
       - C:\Users\Adam\Desktop\workspace\agentic-prompts\.copilot:/root/.copilot
       # Path to target project directory -> the directory path where you want your agent to do work
-      - C:\Users\Adam\Desktop\workspace\react-sample-app:/project-dir
+      - C:\Users\Adam\Desktop\workspace\agentic-prompts\:/project-dir
       # Mount git config from host for commits
       - ~/.gitconfig:/root/.gitconfig:ro
       # Persist data between sessions (bash history, etc.)

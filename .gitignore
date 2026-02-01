@@ -1,7 +1,9 @@
-# .copilot
+# .github
 .copilot/pkg
 .copilot/logs
 .copilot/session-state
+.copilot/command-history-state.json
+.copilot/config.json
 
 # Environment and secrets
 .env
